@@ -1,0 +1,161 @@
+*{
+	margin:0;
+	padding:0
+}
+
+body{
+	overflow: hidden;
+}
+
+.bg{
+	background-size: 100vw 100vh;
+	width: 100%;
+	height: 100vh;
+	background-image: url("./Background.jpg");
+}
+
+#game{
+	visibility: hidden;
+}
+
+#startgame{
+	visibility: visible;
+}
+
+#instrctions{
+	visibility: hidden;
+}
+
+#prof{
+	width: 22vw;
+	height: 30vw;
+	position:absolute;
+	left:0;
+	bottom:0
+}
+
+#helpText{
+	background-color: red;
+	position:absolute;
+	left:18%;
+	right:5%;
+	bottom:0;
+	height:50%;
+	padding:20px;
+	border: solid #fff;
+	border-radius: 50px;
+}
+
+#helpText #text{
+	width: 85%;
+	height: 95%;
+	font-size: 5vh;
+	overflow: auto;
+	text-overflow: ellipsis;
+}
+
+#text::-webkit-scrollbar {
+	display: none;
+}
+
+#instrctions #ship{
+	width: 22vw;
+	height: 20vw;
+	position:absolute;
+	left:40vw;
+	top: 2vh;
+	transition: 1s;
+}
+
+#instrctions button{
+	position:absolute;
+	right: 5%;
+	height: 10%;
+	width: 10%;
+	background-color: blue;
+	color: #fff;
+	font-size: 3.5vh;
+	border: solid #000;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#instrctions #skip{top: 60%;}
+#instrctions #next{top: 30%;}
+
+.spaceship{
+	background-image: url("./spaceship.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 22vw;
+	height: 17vw;
+	position:absolute;
+	left:40vw;
+	animation: 
+	    in 20s linear,
+	    updown 2s infinite linear;
+}
+
+.asteroid{
+	background-image: url("./asteroid1.png");
+	background-repeat: no-repeat;
+	position:absolute;
+	background-size: cover;
+	animation: 
+	    shake  0.5s infinite,
+	    asteroidComing  3s linear;
+	width: 25vw;
+	height: 25vw;
+	left: 39vw;
+}
+
+button.start{
+	position:absolute;
+	left: 40vw;
+	top: 50vh;
+	width: 25%;
+	height: 50px;
+	border-radius: 10px;
+	font-size: 30px;
+	color: #fff;
+	background-color: red;
+	border: solid #ffffff;
+	cursor: pointer;
+}
+
+button.start:hover{
+	animation: shake 5s infinite;
+}
+
+@keyframes in{
+	0%{bottom:-17vw;}
+	100%{bottom: 0;}
+}
+
+@keyframes updown{
+	0%{bottom:0;}
+	50%{bottom:-10px;}
+	100%{bottom: 0;}
+}
+
+@keyframes asteroidComing{
+	0%{		
+	    width: 5vw;
+	    height: 5vw;
+	    left:48vw;
+	}
+}
+
+@keyframes shake {
+    0% {transform: translate(1px, 1px) rotate(0deg);}
+    10% {transform: translate(-1px, -2px) rotate(-1deg);}
+    20% {transform: translate(-3px, 0px) rotate(1deg);}
+    30% {transform: translate(3px, 2px) rotate(0deg);}
+    40% {transform: translate(1px, -1px) rotate(1deg);}
+    50% {transform: translate(-1px, 2px) rotate(-1deg);}
+    60% {transform: translate(-3px, 1px) rotate(0deg);}
+    70% {transform: translate(3px, 1px) rotate(-1deg);}
+    80% {transform: translate(-1px, -1px) rotate(1deg);}
+    90% {transform: translate(1px, 2px) rotate(0deg);}
+    100% {transform: translate(1px, -2px) rotate(-1deg);}
+}
