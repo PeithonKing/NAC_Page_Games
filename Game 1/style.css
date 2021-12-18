@@ -30,7 +30,9 @@ body{
 	left: 0;
 	right: 0;
 	top: 60vh;
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @media screen and (orientation:landscape){
@@ -76,12 +78,11 @@ body{
 }
 
 #instrctions #ship{
-	width: 22vw;
-	height: 20vw;
-	position:absolute;
-	left:40vw;
-	top: 2vh;
-	transition: 1s;
+	width: 29vh;
+	height: 26vh;
+	position: absolute;
+	left: 77vh;
+	top: 5vh;
 }
 
 #instrctions button{
@@ -136,12 +137,13 @@ button.start{
 	font-size: 30px;
 	color: #fff;
 	background-color: red;
-	border: solid #ffffff;
+	border: solid #fff;
 	cursor: pointer;
+	animation: shake 5s infinite;
 }
 
 button.start:hover{
-	animation: shake 5s infinite;
+	background-color: rgb(201, 0, 0);
 }
 
 @keyframes in{
@@ -160,6 +162,18 @@ button.start:hover{
 	    width: 5vw;
 	    height: 5vw;
 	    left:48vw;
+	}
+}
+
+@keyframes descend{
+	65%{
+		top: 80vh;
+	}
+	100%{
+		width: 22vw;
+		height: 21vw;
+		left:40vw;
+		top: 63vh;
 	}
 }
 
