@@ -1,5 +1,12 @@
 document.getElementById("startBTN").addEventListener("click", startGame);
 
+if (window.innerHeight > window.innerWidth) {
+    portrait = true;
+	console.log(portrait)
+} else {
+    portrait = false;
+	console.log(portrait)
+}
 
 var instructions = [
 	"1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, dolores.",
@@ -44,12 +51,10 @@ function showInstructions(){
 
 
 function next(){
-	document.getElementById("text").innerHTML = instructions[atInst]
 	atInst += 1;
+	document.getElementById("text").innerHTML = instructions[atInst-1]
+	if(atInst>instructions.length){game();}
 	console.log(atInst);
-	if(atInst>instructions.length){
-		setTimeout(game, 100);
-	}
 }
 
 function game(){
@@ -62,3 +67,4 @@ function game(){
 		document.getElementById("game").innerHTML = '<div class="spaceship"></div><div class="asteroid"></div>';
     }, 1000)
 }
+

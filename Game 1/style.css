@@ -19,7 +19,24 @@ body{
 }
 
 #startgame{
+	display: flex;
 	visibility: visible;
+	justify-content: center;
+}
+
+#startgame h4{
+	color: #fff;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 60vh;
+	text-align: center;
+}
+
+@media screen and (orientation:landscape){
+	#startgame h4{
+		visibility: hidden;
+	}
 }
 
 #instrctions{
@@ -110,11 +127,11 @@ body{
 }
 
 button.start{
-	position:absolute;
-	left: 40vw;
+	position:relative;
 	top: 50vh;
 	width: 25%;
 	height: 50px;
+	/* margin: auto; */
 	border-radius: 10px;
 	font-size: 30px;
 	color: #fff;
