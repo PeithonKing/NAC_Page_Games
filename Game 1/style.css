@@ -20,7 +20,7 @@ body{
 
 #startgame{
 	display: flex;
-	visibility: visible;
+	visibility: visible; /* Remember to make it visible */
 	justify-content: center;
 }
 
@@ -132,7 +132,6 @@ button.start{
 	top: 50vh;
 	width: 25%;
 	height: 50px;
-	/* margin: auto; */
 	border-radius: 10px;
 	font-size: 30px;
 	color: #fff;
@@ -145,6 +144,54 @@ button.start{
 button.start:hover{
 	background-color: rgb(201, 0, 0);
 }
+
+#questions{
+	background-color: rgb(0, 0, 126, 0.8);
+	position: absolute;
+	left: 8vw;
+	top: 8vh;
+	width: 75vw;
+	height: 50vh;
+	border: solid #fff;
+	border-radius: 20vh;
+	padding: 5vw;
+	visibility: hidden;
+}
+
+
+.grid-container {
+	display: grid;
+	grid-template-columns: auto auto;
+	padding: 0;
+	width: 70%;
+	margin:auto;
+}
+
+.grid-container > div {
+	padding-top: 50px;
+	padding-bottom: 30px;
+	font-size: 30px;
+	text-align: center;
+	color: rgb(233, 233, 233);
+}
+
+#submitbutton{
+	display: flex;
+	position:absolute;
+	justify-content: center;
+	left: 37vw;
+	width: 10vw;
+    height: 7vh;
+	font-size: x-large;
+}
+
+#Q > h1{
+	text-align: center;
+	color: rgb(233, 233, 233);
+}
+
+
+/* All Animations Below */
 
 @keyframes in{
 	0%{bottom:-17vw;}
@@ -174,6 +221,27 @@ button.start:hover{
 		height: 21vw;
 		left:40vw;
 		top: 63vh;
+	}
+}
+
+@keyframes zoomIn{
+	0%{
+		opacity: 0;
+		position:absolute;
+		width: 25vw;
+		height: 25vw;
+		left: 39vw;
+	}
+	50%{opacity: 0;}
+}
+
+@keyframes zoomOut{
+	50%{opacity: 0;}
+	100%{
+		position:absolute;
+		width: 25vw;
+		height: 25vw;
+		left: 39vw;
 	}
 }
 

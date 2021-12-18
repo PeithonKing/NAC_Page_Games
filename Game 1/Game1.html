@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>NAC Game 1</title>
 </head>
 
 <body>
@@ -14,23 +14,39 @@
 	<div class="bg">
 
 		<div id="game"></div>
-		<!-- The whole game comes into this div.
-		It is rendered by the JavaScript -->
+		<!-- The asteroid and spaceship of the game comes
+		 under this div. It is rendered by the JavaScript -->
+		 
 
+		<div id="questions">
+			<div id="Q"></div>
+			<form id="questionForm" onsubmit="return false;">
+	<!-- <input type="radio" name="choice" value="Option 1" id="Option 1"> 
+		<label for="Option 1">Option 1</label><br>
+
+		<input type="radio" name="choice" value="no" id="choice-no">
+		<label for="choice-no">No</label><br>
+
+		<button id="btn">Show Selected Value</button> -->
+			</form>
+		</div>
+		<!-- The Questions of the game comes under
+		 this div. It is rendered by the JavaScript -->
+		
+		<div id="instrctions">
+			<div id="helpText">
+				<div id="text"></div>
+				<button id="next">Next</button>
+				<button id="skip">Skip</button>
+			</div>
+			<img id="prof" src="prof3.png">
+			<img id="ship" src="spaceship.png">
+		</div>
+		
 		<div id="startgame">
 			<!-- The Starting screen! -->
 			<button class="start" id="startBTN">Start</button>
 			<h4 id="startgameH">Rotate your device to landscape</h4>
-		</div>
-
-		<div id="instrctions">
-			<div id="helpText">
-				<div id="text"></div>
-				<button id="next">next</button>
-				<button id="skip">skip</button>
-			</div>
-			<img id="prof" src="prof3.png">
-			<img id="ship" src="spaceship.png">
 		</div>
 
 	</div>
