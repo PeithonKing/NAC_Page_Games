@@ -9,7 +9,7 @@ body{
 
 .bg{
 	background-size: 100vw 100vh;
-	width: 100%;
+	width: 100vw;
 	height: 100vh;
 	background-image: url("./Background.jpg");
 }
@@ -20,7 +20,7 @@ body{
 
 #startgame{
 	display: flex;
-	visibility: visible; /* Remember to make it visible */
+	visibility: visible; 
 	justify-content: center;
 }
 
@@ -109,6 +109,7 @@ body{
 	height: 17vw;
 	position:absolute;
 	left:40vw;
+	bottom:0;
 	animation: 
 	    in 20s linear,
 	    updown 2s infinite linear;
@@ -125,6 +126,17 @@ body{
 	width: 25vw;
 	height: 25vw;
 	left: 39vw;
+	top: 0;
+	opacity: 1;
+}
+
+#collision {
+	position: absolute;
+	width: 50vh;
+	height: 50vh;
+	bottom: 10vh;
+	left: 40vw;
+    animation: grow 2s;
 }
 
 button.start{
@@ -190,6 +202,34 @@ button.start:hover{
 	color: rgb(233, 233, 233);
 }
 
+#startAgain{
+	left: 37.5vw;
+	top: 60vh;
+	position:relative;
+	width: 25%;
+	height: 10vh;
+	border-radius: 10px;
+	font-size: 30px;
+	color: #fff;
+	background-color: red;
+	border: solid #fff;
+	cursor: pointer;
+}
+
+#endGame{
+	color: rgb(198, 253, 191);
+	font-size: 20vh;
+	text-shadow: 0 0 30px #1eff00;
+	position: absolute;
+	text-align: center;
+	top: 20vh;
+	width: 48vw;
+	left: calc(50vw - (48vw/2));
+}
+
+#end{
+	visibility: hidden;
+}
 
 /* All Animations Below */
 
@@ -235,14 +275,18 @@ button.start:hover{
 	50%{opacity: 0;}
 }
 
-@keyframes zoomOut{
-	50%{opacity: 0;}
-	100%{
-		position:absolute;
-		width: 25vw;
-		height: 25vw;
-		left: 39vw;
+@keyframes zoomIn2{
+	0%{
+		top: 50vh;
+		font-size: 1px;
+		width:1vw;
+		height:1vh;
+		left:50vw;
 	}
+}
+
+@keyframes fade{
+	100%{opacity: 0;}
 }
 
 @keyframes shake {
@@ -257,4 +301,54 @@ button.start:hover{
     80% {transform: translate(-1px, -1px) rotate(1deg);}
     90% {transform: translate(1px, 2px) rotate(0deg);}
     100% {transform: translate(1px, -2px) rotate(-1deg);}
+}
+
+@keyframes asteroid_c1 {
+	0%{top: 0;}
+	75%{top: 20vh;}
+	100%{top: 20vh;}
+}
+
+@keyframes grow {
+	0%{
+		opacity:0%;
+		width:7vh;
+		height:7vh;
+		bottom:27vh;
+		left:50vw;
+	}
+	75%{
+		opacity:0%;
+		width:7vh;
+		height:7vh;
+		bottom:27vh;
+		left:50vw;
+	}
+	100%{
+		opacity: 100%;
+	}
+}
+
+@keyframes dodge_s_r {
+	50%{
+		left:70vw;
+	}
+}
+
+@keyframes dodge_s_l {
+	50%{
+		left:10vw;
+	}
+}
+
+@keyframes dodge_a {
+	100%{
+		top: 120vh;
+	}
+}
+
+@keyframes escape {
+	100%{
+		bottom: 120vh;
+	}
 }
