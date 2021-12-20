@@ -24,6 +24,14 @@ body{
 	justify-content: center;
 }
 
+#score{
+	color: yellow;
+	text-align: right;
+	font-size: 7vh;
+	padding: 1vh;
+	visibility: hidden;
+}
+
 #startgame h4{
 	color: #fff;
 	position: absolute;
@@ -60,9 +68,9 @@ body{
 	right:5%;
 	bottom:0;
 	height:50%;
-	padding:20px;
+	padding:2vw;
 	border: solid #fff;
-	border-radius: 50px;
+	border-radius: 5vw;
 }
 
 #helpText #text{
@@ -78,10 +86,10 @@ body{
 }
 
 #instrctions #ship{
-	width: 29vh;
-	height: 26vh;
+	width: 22vw;
+	height: 17vw;
 	position: absolute;
-	left: 77vh;
+	left: 42vw;
 	top: 5vh;
 }
 
@@ -94,14 +102,14 @@ body{
 	color: #fff;
 	font-size: 3.5vh;
 	border: solid #000;
-	border-radius: 5px;
+	border-radius: 1vw;
 	cursor: pointer;
 }
 
 #instrctions #skip{top: 60%;}
 #instrctions #next{top: 30%;}
 
-.spaceship{
+/* .spaceship{
 	background-image: url("./spaceship.png");
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -128,24 +136,47 @@ body{
 	left: 39vw;
 	top: 0;
 	opacity: 1;
+} */
+
+.spaceship{
+	width: 22vw;
+	height: 17vw;
+	position:absolute;
+	left:40vw;
+	bottom:0;
+	animation: 
+	    in 20s linear,
+	    updown 2s infinite linear;
+}
+
+.asteroid{
+	position:absolute;
+	animation: 
+	    shake  0.5s infinite,
+	    asteroidComing  3s linear;
+	width: 25vw;
+	height: 25vw;
+	left: 39vw;
+	top: 0;
+	opacity: 1;
 }
 
 #collision {
 	position: absolute;
 	width: 50vh;
 	height: 50vh;
-	bottom: 10vh;
-	left: 40vw;
+	bottom: 7vh;
+	left: 37vw;
     animation: grow 2s;
 }
 
 button.start{
 	position:relative;
-	top: 50vh;
+	top: 40vh;
 	width: 25%;
-	height: 50px;
+	height: 13vh;
 	border-radius: 10px;
-	font-size: 30px;
+	font-size: 5vw;
 	color: #fff;
 	background-color: red;
 	border: solid #fff;
@@ -180,26 +211,31 @@ button.start:hover{
 }
 
 .grid-container > div {
-	padding-top: 50px;
-	padding-bottom: 30px;
-	font-size: 30px;
+	padding-top: 3vw;
+	padding-bottom: 3vw;
+	font-size: 3vw;
 	text-align: center;
-	color: rgb(233, 233, 233);
+	color: yellow;
 }
 
 #submitbutton{
 	display: flex;
 	position:absolute;
 	justify-content: center;
-	left: 37vw;
-	width: 10vw;
-    height: 7vh;
-	font-size: x-large;
+	left: 32vw;
+	width: 20vw;
+    height: 10vh;
+	font-size: 6vh;
+	border-radius: 1vw;
+	border: none;
+	color: #fff;
+	background-color: red;
 }
 
 #Q > h1{
 	text-align: center;
-	color: rgb(233, 233, 233);
+	color: yellow;
+	font-size: 3vw;
 }
 
 #startAgain{
@@ -209,7 +245,7 @@ button.start:hover{
 	width: 25%;
 	height: 10vh;
 	border-radius: 10px;
-	font-size: 30px;
+	font-size: 5vh;
 	color: #fff;
 	background-color: red;
 	border: solid #fff;
@@ -223,12 +259,18 @@ button.start:hover{
 	position: absolute;
 	text-align: center;
 	top: 20vh;
-	width: 48vw;
-	left: calc(50vw - (48vw/2));
+	width: 60vw;
+	left: calc(50vw - (60vw/2));
 }
 
 #end{
 	visibility: hidden;
+}
+
+input[type="radio"] {
+	width:5vh;
+	height:5vh;
+
 }
 
 /* All Animations Below */
@@ -257,10 +299,8 @@ button.start:hover{
 		top: 80vh;
 	}
 	100%{
-		width: 22vw;
-		height: 21vw;
 		left:40vw;
-		top: 63vh;
+		top: 70vh;
 	}
 }
 
@@ -305,8 +345,8 @@ button.start:hover{
 
 @keyframes asteroid_c1 {
 	0%{top: 0;}
-	75%{top: 20vh;}
-	100%{top: 20vh;}
+	75%{top: 35vh;}
+	100%{top: 35vh;}
 }
 
 @keyframes grow {

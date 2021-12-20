@@ -71,12 +71,14 @@ var atQ = 0;
 
 function game() {
 	document.getElementById("helpText").style.visibility = "hidden";
+	document.getElementById("score").style.visibility = "visible";
 	document.getElementById("prof").style.visibility = "hidden";
 	document.getElementById("ship").style.animation = "descend 1s";
 	setTimeout(() => {
 		document.getElementById("ship").style.visibility = "hidden";
 		document.getElementById("game").style.visibility = "visible";
-		document.getElementById("game").innerHTML = '<div class="asteroid"></div>\n<div class="spaceship"></div>';
+		// document.getElementById("game").innerHTML = '<div class="asteroid"></div>\n<div class="spaceship"></div>';
+		document.getElementById("game").innerHTML = '<img src="asteroid1.png" class="asteroid">\n<img src="spaceship.png" class="spaceship">';
 	}, 900)
 	console.log("questions.length", questions.length)
 	ask(4500);
@@ -113,6 +115,7 @@ function selected(){
 function checkanswer() {
 	q = questions[atQ];
 	corr = q["Options"][q["Answer"] - 1]
+	document.getElementById("score").innerHTML = `Score: ${10*(atQ+1)}`
 	document.getElementById("questions").style.animation = "fade 0.5s";
 	setTimeout(() => {
 		document.getElementById("questions").style.visibility = "hidden";
