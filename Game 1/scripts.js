@@ -7,32 +7,57 @@ function right_orientation() {
 	} else { return true; }
 };
 
-// var instructions = [
-// 	"Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, dolores.",
-// 	"Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, dolores.",
-// 	"Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, dolores.",
-// 	"Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, dolores.",
-// ];
+var instructions = [
+	"Hi! Young Astronaut! Hope you are doing well...",
+	"Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, dolores.",
+	"Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, dolores.",
+	"Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, dolores.",
+];
 
-var instructions = Array(5).fill("Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, dolores.")
+//var instructions = Array(5).fill("Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, dolores.")
 
 var questions = [
 	{
-		"Question": "Question1: This is some random Question1? (Correct = 2)",
-		"Options": ["Option1", "Option2", "Option3", "Option4"],
-		"Answer": 2
-	},
-	{
-		"Question": "Question2: This is some random Question2? (Correct = 1)",
-		"Options": ["Option1", "Option2", "Option3", "Option4"],
+		"Question": "How many moons does Jupiter have officially?",
+		"Options": ["53", "79", "21", "47"],
 		"Answer": 1
 	},
 	{
-		"Question": "Question3: This is some random Question3? (Correct = 3)",
-		"Options": ["Option1", "Option2", "Option3", "Option4"],
+		"Question": "Which galaxy is home to the Solar system?",
+		"Options": ["Andromeda", "Whirlpool", "Milky Way", "Sombreo"],
 		"Answer": 3
+	},
+	{
+		"Question": "What is the third brightest astronomical object in the sky?",
+		"Options": ["Sun", "Venus", "Moon", "Jupiter"],
+		"Answer": 2
 	}
 ]
+
+// var temp = 0;
+
+// function typeWriter(ID, n, speed) {
+// 	text = `${atInst}.&emsp;` + instructions[n-1]
+// 	console.log(text)
+// 	console.log(text.length)
+// 	if (temp < text.length) {
+// 		console.log(text.charAt(temp))
+// 		document.getElementById(ID).innerHTML += text.charAt(temp);
+// 		temp++;
+// 		setTimeout(typeWriter(ID, n, speed), speed);
+// 	}
+// 	else{i=0}
+// }
+
+
+function typeWriter(ID, text, speed, at = 0){
+	console.log(text)
+	if(at < text.length){
+	    document.getElementById(ID).innerHTML += text.charAt(at);
+		setTimeout(()=>{typeWriter(ID, text, speed, at+1)}, speed)
+    }
+}
+
 
 function startGame() {
 	if (right_orientation()) {
@@ -61,8 +86,9 @@ function showInstructions() {
 function next() {
 	console.log("Entered next")
 	atInst += 1;
-	document.getElementById("text").innerHTML = `<p>Instructions:</p><p>${atInst}.&emsp;` + instructions[atInst - 1] + "</p>";
-	console.log(document.getElementById("text"))
+	text = instructions[atInst - 1]
+    typeWriter("text", text, 50, 0);
+	// console.log(document.getElementById("text"));
 	if (atInst > instructions.length) { game(); }
 	console.log(atInst);
 }
@@ -99,15 +125,15 @@ function ask(delay) {
 		document.getElementById("questions").style.visibility = "visible";
 		document.getElementById("questions").style.animation = "zoomIn 0.5s";
 		document.getElementById("submitbutton").addEventListener("click", () => {
-			if(selected()){checkanswer();}
+			if (selected()) { checkanswer(); }
 		});
-    }, delay)
+	}, delay)
 
 }
 
-function selected(){
+function selected() {
 	const rbs = document.querySelectorAll('input[name="choice"]');
-	for(const rb of rbs){if(rb.checked){return true;}}
+	for (const rb of rbs) { if (rb.checked) { return true; } }
 	return false;
 };
 
@@ -115,7 +141,7 @@ function selected(){
 function checkanswer() {
 	q = questions[atQ];
 	corr = q["Options"][q["Answer"] - 1]
-	document.getElementById("score").innerHTML = `Score: ${10*(atQ+1)}`
+	document.getElementById("score").innerHTML = `Score: ${10 * (atQ + 1)}`
 	document.getElementById("questions").style.animation = "fade 0.5s";
 	setTimeout(() => {
 		document.getElementById("questions").style.visibility = "hidden";
@@ -133,39 +159,39 @@ function checkanswer() {
 };
 
 
-function dodge(){
-    // const asteroid = document.getElementsByClassName("asteroid")[0]
-    // const spaceship = document.getElementsByClassName("spaceship")[0]
+function dodge() {
+	// const asteroid = document.getElementsByClassName("asteroid")[0]
+	// const spaceship = document.getElementsByClassName("spaceship")[0]
 	document.getElementsByClassName("asteroid")[0].style.animation = "dodge_a 3s"
-	if(atQ%2){document.getElementsByClassName("spaceship")[0].style.animation = "dodge_s_r 3s";}
-	else{document.getElementsByClassName("spaceship")[0].style.animation = "dodge_s_l 3s";}
-	setTimeout(()=>{
+	if (atQ % 2) { document.getElementsByClassName("spaceship")[0].style.animation = "dodge_s_r 3s"; }
+	else { document.getElementsByClassName("spaceship")[0].style.animation = "dodge_s_l 3s"; }
+	setTimeout(() => {
 		atQ += 1
-		if(atQ<questions.length){
+		if (atQ < questions.length) {
 			console.log("Restoring updown Animation");
 			document.getElementsByClassName("spaceship")[0].style.animation = ""
 			document.getElementsByClassName("asteroid")[0].style.animation = ""
 			document.getElementsByClassName("spaceship")[0].style.animation = "updown 2s infinite linear;"
-			document.getElementsByClassName("asteroid")[0].style.animation = "shake  0.5s infinite, asteroidComing 3s linear;"	    
+			document.getElementsByClassName("asteroid")[0].style.animation = "shake  0.5s infinite, asteroidComing 3s linear;"
 			ask(5000);
 		}
-		else{CompleteGame();}
+		else { CompleteGame(); }
 	}, 3000);
 };
 
-function collision(){
+function collision() {
 	document.getElementsByClassName("asteroid")[0].style.animation = "2s cubic-bezier(0.79, 0.31, 1, 0.57) asteroid_c1, shake  0.5s 6";
 	document.getElementById("game").innerHTML += '\n<img src="collision.png" id="collision">\n'
 	document.getElementsByClassName("asteroid")[0].style.top = "20vh";
-	setTimeout(()=>{gameOver("Game Over")}, 2000);
+	setTimeout(() => { gameOver("Game Over") }, 2000);
 };
 
-function gameOver(s){
+function gameOver(s) {
 	document.getElementById("game").innerHTML = "";
 	document.getElementById("end").style.visibility = 'visible'
 	document.getElementById("end").innerHTML = `<h1 id="endGame">${s}</h1>`
 	document.getElementById("endGame").style.animation = "zoomIn2 2s"
-	setTimeout(()=>{
+	setTimeout(() => {
 		document.getElementById("endGame").style.animation = ""
 		document.getElementById("end").innerHTML += '\n<button id="startAgain">Play Again</button>'
 		document.getElementById("startAgain").style.animation = "zoomIn2 2s"
@@ -178,12 +204,12 @@ function gameOver(s){
 	}, 3000)
 }
 
-function CompleteGame(){
+function CompleteGame() {
 	// make spaceship move ahead, out of screen! here!
 	document.getElementsByClassName("asteroid")[0].style.visibility = "hidden"
 	document.getElementsByClassName("spaceship")[0].style.animation = ""
 	document.getElementsByClassName("spaceship")[0].style.animation = "escape 2s"
-	setTimeout(()=>{
+	setTimeout(() => {
 		document.getElementsByClassName("spaceship")[0].style.visibility = "hidden"
 		gameOver("Thank You");
 	}, 2000)
